@@ -1,10 +1,10 @@
-package main.java.com.company.classes;
+package com.company.classes;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerMenu {
-    public static List<Customer> customers = new ArrayList<>();
+    public static List<Customer> customers = new ArrayList();
 
     public static void Add(String socialSecurityNumber,String lastName, String firstName,String address, String phone, String mail){
         Customer customer = new Customer(socialSecurityNumber, lastName, firstName, address, phone, mail);
@@ -23,25 +23,18 @@ public class CustomerMenu {
 
     public static void Modify(String name,String elementToChange,String newValue){
         Customer customer = getCustomer(name);
-        switch (elementToChange){
-            case "socialSecurityNumber":
-                customer.socialSecurityNumber=newValue;
-                break;
-            case "lastName":
-                customer.lastName=newValue;
-                break;
-            case "firstName":
-                customer.firstName=newValue;
-                break;
-            case "address":
-                customer.address=newValue;
-                break;
-            case "phone":
-                customer.phone=newValue;
-                break;
-            case "mail":
-                customer.mail=newValue;
-                break;
+        if ("socialSecurityNumber".equals(elementToChange)) {
+            customer.socialSecurityNumber = newValue;
+        } else if ("lastName".equals(elementToChange)) {
+            customer.lastName = newValue;
+        } else if ("firstName".equals(elementToChange)) {
+            customer.firstName = newValue;
+        } else if ("address".equals(elementToChange)) {
+            customer.address = newValue;
+        } else if ("phone".equals(elementToChange)) {
+            customer.phone = newValue;
+        } else if ("mail".equals(elementToChange)) {
+            customer.mail = newValue;
         }
     }
     public static Customer getCustomer(String name){
