@@ -20,6 +20,9 @@ public class HospitalMenu {
         }else if (choice.contains("Booking")){
 
         }
+        else if(choice.contains("exit")){
+            return;
+        }
     }
 
     private void DoctorMenu(){
