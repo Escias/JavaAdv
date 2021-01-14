@@ -1,0 +1,7 @@
+[{
+  "1": [5, "N -> se rendre vers la forêt", 2, "W -> se rendre vers la colline", 3, "E -> se rendre vers le building", 4, "S -> se rendre vers la vallée"],
+  "2": [5, "N -> se rendre vers la forêt"],
+  "3": [1, "W -> se rendre vers la route"],
+  "4": [1, "N -> se rendre vers la route", 2, "W -> se rendre vers la colline"],
+  "5": [1, "S -> se rendre vers la route"]
+}]
