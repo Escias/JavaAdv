@@ -1,5 +1,13 @@
 package com.company.classes;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,5 +52,49 @@ public class CustomerMenu {
             }
         }
         return null;
+    }
+
+    public static void loadCustomers() throws IOException, ParseException {
+        //JSON parser object to parse read file
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader;
+        try {
+            reader = new FileReader("customers.json");
+        }
+        catch(Exception e){
+            return;
+        }
+        org.json.simple.JSONArray customersList = (org.json.simple.JSONArray) jsonParser.parse(reader);
+        for (Object customerInfoObject:customersList)
+        {
+            org.json.simple.JSONObject customerInfo = (org.json.simple.JSONObject) customerInfoObject;
+            Customer customer= new Customer(customerInfo.get("socialSecurityNumber").toString(),
+                    customerInfo.get("lastName").toString(),
+                    customerInfo.get("firstName").toString(),
+                    customerInfo.get("address").toString(),
+                    customerInfo.get("phone").toString(),
+                    customerInfo.get("mail").toString());
+            customers.add(customer);
+        }
+    }
+
+    public static void saveCustomers() throws IOException {
+        JSONArray customersList = new JSONArray();
+        for (Customer customer:customers)
+        {
+            JSONObject customerDetails=new JSONObject();
+            customerDetails.put("socialSecurityNumber",customer.socialSecurityNumber);
+            customerDetails.put("lastName",customer.lastName);
+            customerDetails.put("firstName",customer.firstName);
+            customerDetails.put("address",customer.address);
+            customerDetails.put("phone",customer.phone);
+            customerDetails.put("mail",customer.mail);
+
+            customersList.put(customerDetails);
+
+        }
+        FileWriter file = new FileWriter("customers.json");
+        file.write(customersList.toString());
+        file.flush();
     }
 }

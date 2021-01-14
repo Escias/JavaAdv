@@ -21,7 +21,7 @@ public class HospitalMenu {
         }else if (choice.contains("Booking")){
             BookingMenu();
         }else if (choice.contains("Exit")){
-            System.exit(1);
+            return;
         }
     }
 

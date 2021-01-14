@@ -1,7 +1,5 @@
 package com.company.classes;
 
-import java.util.Scanner;
-
 public class Customer {
     public String socialSecurityNumber;
     public String lastName;
