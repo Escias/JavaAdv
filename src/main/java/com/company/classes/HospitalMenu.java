@@ -113,11 +113,12 @@ public class HospitalMenu {
         int choice = c.nextInt();
         switch (choice){
             case 1:
-                System.out.println("Enter doctor number, customer number, customer name, reason, duration, chamber");
+                System.out.println("Enter doctor number, customer number, customer name, reason, duration");
                 Scanner info = new Scanner(System.in);
                 String information = info.nextLine();
                 String[] booking = information.split(",");
-                BookingMenu.Add(booking[0],booking[1],booking[2],booking[3],booking[4],booking[5]);
+                BookingMenu bookingMenu = new BookingMenu();
+                bookingMenu.Add(booking[0],booking[1],booking[2],booking[3],booking[4]);
                 BookingMenu();
                 break;
             case 2:

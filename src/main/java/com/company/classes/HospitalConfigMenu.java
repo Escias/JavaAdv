@@ -96,4 +96,19 @@ public class HospitalConfigMenu {
         file.write(hospitalsList.toString());
         file.flush();
     }
+
+    public static String checkValidity(String chamber){
+        HospitalConfig hospitalConfig = getHospitalConfig(chamber);
+        assert hospitalConfig != null;
+        return hospitalConfig.status;
+    }
+
+    public static HospitalConfig getHospitalConfig(String name){
+        for (HospitalConfig hospitalConfig:hospitals) {
+            if(hospitalConfig.chamber.equals(name)){
+                return hospitalConfig;
+            }
+        }
+        return null;
+    }
 }
