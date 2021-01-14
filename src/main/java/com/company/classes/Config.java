@@ -13,7 +13,7 @@ import static java.lang.Integer.parseInt;
 
 public class Config {
 
-    public Map<Integer, String> parse(String id) throws IOException, ParseException {
+    public Map<Integer, String> parseDirection(String id) throws IOException, ParseException {
         Map<Integer, String> directions = new HashMap<Integer, String>();
         JSONParser jsonParser = new JSONParser();
         FileReader reader;
@@ -39,5 +39,22 @@ public class Config {
             }
         }
         return directions;
+    }
+
+    public String parseDescription(String id) throws IOException, ParseException {
+        String description = null;
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader;
+        try {
+            reader = new FileReader("gameConfigs/descriptions.json");
+        }catch(Exception e){
+            return "error";
+        }
+        JSONArray parseConfig = (JSONArray) jsonParser.parse(reader);
+        for (Object configuration:parseConfig){
+            org.json.simple.JSONObject jsonContent = (org.json.simple.JSONObject) configuration;
+            description = jsonContent.get(id).toString();
+        }
+        return description;
     }
 }

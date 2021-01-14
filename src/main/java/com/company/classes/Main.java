@@ -10,8 +10,5 @@ public class Main {
         GameFeatures gameFeatures = new GameFeatures();
 
         gameFeatures.start();
-
-        //GameFeatures gameFeatures = new GameFeatures();
-        //gameFeatures.start();
     }
 }
