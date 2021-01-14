@@ -55,6 +55,7 @@ public class BookingMenu {
         Booking booking = new Booking(matricule,social,customerName,why,duration,chamber);
         bookings.add(booking);
         HospitalConfigMenu.ChangeChamberStatus(chamber, "done");
+        InvoiceData.Create(matricule,customerName);
     }
 
     public boolean ValidityCustomer(String name){
@@ -123,10 +124,16 @@ public class BookingMenu {
         return booking.chamber;
     }
 
+    public static String getDuration(String name){
+        Booking booking = getBooking(name);
+        assert booking != null;
+        return booking.duration;
+    }
+
     public static void View(String customerName) {
         Booking booking=getBooking(customerName);
         if (booking == null){
-            System.out.println("not found");
+            System.out.println("Booking not found");
         }else {
             System.out.println("Doctor N°:" + booking.matriculeNumber);
             System.out.println("Customer N°" + booking.socialSecurityNumber);

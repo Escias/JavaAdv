@@ -21,12 +21,16 @@ public class DoctorMenu {
 
     public static void View(String doctorName) {
         Doctor doctor=getDoctor(doctorName);
-        System.out.println("N°:"+doctor.matriculeNumber);
-        System.out.println("Name"+doctor.lastName);
-        System.out.println("First name:"+doctor.firstName);
-        System.out.println("Speciality:"+doctor.speciality);
-        System.out.println("Grade:"+doctor.grade);
-        System.out.println("Price per hour:"+doctor.price);
+        if (doctor == null) {
+            System.out.println("Doctor not found");
+        }else{
+            System.out.println("N°:"+doctor.matriculeNumber);
+            System.out.println("Name"+doctor.lastName);
+            System.out.println("First name:"+doctor.firstName);
+            System.out.println("Speciality:"+doctor.speciality);
+            System.out.println("Grade:"+doctor.grade);
+            System.out.println("Price per hour:"+doctor.price);
+        }
     }
 
     public static void Modify(String name,String elementToChange,String newValue){
@@ -50,6 +54,12 @@ public class DoctorMenu {
         Doctor doctor = getDoctor(name);
         assert doctor != null;
         return doctor.matriculeNumber;
+    }
+
+    public static String getPrice(String name){
+        Doctor doctor = getDoctor(name);
+        assert doctor != null;
+        return doctor.price;
     }
 
     public static Doctor getDoctor(String name){

@@ -14,6 +14,8 @@ import static com.company.classes.HospitalConfigMenu.loadHospital;
 import static com.company.classes.HospitalConfigMenu.saveHospital;
 import static com.company.classes.BookingMenu.loadBooking;
 import static com.company.classes.BookingMenu.saveBooking;
+import static com.company.classes.InvoiceData.loadInvoice;
+import static com.company.classes.InvoiceData.saveInvoice;
 
 public class Main {
 
@@ -24,6 +26,7 @@ public class Main {
         loadDoctors();
         loadCustomers();
         loadBooking();
+        loadInvoice();
 
         File check = new File("hospital.json");
         if (check.exists() && !check.isDirectory()){
@@ -37,5 +40,6 @@ public class Main {
         saveCustomers();
         saveHospital();
         saveBooking();
+        saveInvoice();
     }
 }

@@ -107,7 +107,8 @@ public class HospitalMenu {
                 "[2] Modify a reservation\n" +
                 "[3] View reservation\n" +
                 "[4] Cancel a reservation\n" +
-                "[5] Return");
+                "[5] View Invoice\n" +
+                "[6] Return");
         Scanner c = new Scanner(System.in);
         int choice = c.nextInt();
         switch (choice){
@@ -143,6 +144,13 @@ public class HospitalMenu {
                 BookingMenu();
                 break;
             case 5:
+                System.out.println("Enter customer name");
+                Scanner in = new Scanner(System.in);
+                String invoice = in.nextLine();
+                InvoiceData.View(invoice);
+                BookingMenu();
+                break;
+            case 6:
                 Menu();
                 break;
         }
