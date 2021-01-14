@@ -13,12 +13,12 @@ public class CustomerMenu {
 
     public static void View(String customerName) {
         Customer customer=getCustomer(customerName);
-        System.out.println("N°:"+customer.socialSecurityNumber);
-        System.out.println("Name"+customer.lastName);
-        System.out.println("First name:"+customer.firstName);
-        System.out.println("Speciality:"+customer.address);
-        System.out.println("Grade:"+customer.phone);
-        System.out.println("Price per hour:"+customer.mail);
+        System.out.println("N° : "+customer.socialSecurityNumber);
+        System.out.println("Name : "+customer.lastName);
+        System.out.println("First name : "+customer.firstName);
+        System.out.println("Address : "+customer.address);
+        System.out.println("Phone : :"+customer.phone);
+        System.out.println("Mail : "+customer.mail);
     }
 
     public static void Modify(String name,String elementToChange,String newValue){
