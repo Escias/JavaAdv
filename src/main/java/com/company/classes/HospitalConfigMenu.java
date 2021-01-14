@@ -58,7 +58,7 @@ public class HospitalConfigMenu {
 
     public void Add(int floor, int room) {
         List<String> chambers = new ArrayList<>();
-        HospitalConfig hospitalConfig = null;
+        HospitalConfig hospitalConfig;
         String floorNumber;
         String chamber = null;
         for (int j=0; j <= floor; j++){
@@ -77,8 +77,8 @@ public class HospitalConfigMenu {
                     chambers.add(chamber);
                 }
                 hospitalConfig = new HospitalConfig(floorNumber, chamber, "Available");
+                hospitals.add(hospitalConfig);
             }
-            hospitals.add(hospitalConfig);
         }
     }
 
