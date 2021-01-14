@@ -5,7 +5,6 @@ import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -38,29 +37,26 @@ public class HospitalConfigMenu {
             }
             room = r.nextInt();
         }while (room <= 0);
-        Generate(floor, room);
+        Add(floor, room);
     }
 
     public static List<HospitalConfig> hospitals = new ArrayList();
 
-    /*public void Load() throws IOException, ParseException {
+    public void LoadHospital() throws IOException, ParseException {
         JSONParser jsonParser = new JSONParser();
         FileReader reader = new FileReader("hospital.json");
-        org.json.simple.JSONArray doctorsList = (org.json.simple.JSONArray) jsonParser.parse(reader);
-        for (Object doctorInfoObject:doctorsList)
+        org.json.simple.JSONArray hospitalsList = (org.json.simple.JSONArray) jsonParser.parse(reader);
+        for (Object hospitalInfoObject:hospitalsList)
         {
-            org.json.simple.JSONObject doctorInfo = (org.json.simple.JSONObject) doctorInfoObject;
-            Doctor doctor= new Doctor(doctorInfo.get("matriculeNumber").toString(),
-                    doctorInfo.get("lastName").toString(),
-                    doctorInfo.get("firstName").toString(),
-                    doctorInfo.get("speciality").toString(),
-                    doctorInfo.get("grade").toString(),
-                    doctorInfo.get("price").toString());
-            hospitals.add(doctor);
+            org.json.simple.JSONObject hospitalInfo = (org.json.simple.JSONObject) hospitalInfoObject;
+            HospitalConfig hospitalConfig= new HospitalConfig(hospitalInfo.get("floor").toString(),
+                    hospitalInfo.get("chamber").toString(),
+                    hospitalInfo.get("status").toString());
+            hospitals.add(hospitalConfig);
         }
-    }*/
+    }
 
-    public void Add(int floor, int room, String status) {
+    public void Add(int floor, int room) {
         List<String> chambers = new ArrayList<>();
         HospitalConfig hospitalConfig = null;
         String floorNumber;
@@ -86,7 +82,24 @@ public class HospitalConfigMenu {
         }
     }
 
-    public void Generate(int floor, int room) throws IOException {
+    public void saveHospital() throws IOException {
+        JSONArray hospitalsList = new JSONArray();
+        for (HospitalConfig hospitalConfig:hospitals)
+        {
+            JSONObject hospitalDetails=new JSONObject();
+            hospitalDetails.put("floor",hospitalConfig.floor);
+            hospitalDetails.put("chamber",hospitalConfig.chamber);
+            hospitalDetails.put("status",hospitalConfig.status);
+
+            hospitalsList.put(hospitalDetails);
+
+        }
+        FileWriter file = new FileWriter("hospital.json");
+        file.write(hospitalsList.toString());
+        file.flush();
+    }
+
+    /*public void SaveHospital(int floor, int room) throws IOException {
         JSONArray hospitalList = new JSONArray();
         List<String> chambers = new ArrayList<>();
         String floorNumber;
@@ -114,5 +127,5 @@ public class HospitalConfigMenu {
         FileWriter file = new FileWriter("hospital.json");
         file.write(hospitalList.toString());
         file.flush();
-    }
+    }*/
 }

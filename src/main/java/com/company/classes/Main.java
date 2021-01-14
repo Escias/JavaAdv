@@ -22,7 +22,7 @@ public class Main {
 
         File check = new File("hospital.json");
         if (check.exists() && !check.isDirectory()){
-            hospitalConfig.Load();
+            hospitalConfig.LoadHospital();
             menu.Menu();
         }else{
             hospitalConfig.Config();
@@ -30,5 +30,6 @@ public class Main {
 
         saveDoctors();
         saveCustomers();
+        hospitalConfig.saveHospital();
     }
 }
