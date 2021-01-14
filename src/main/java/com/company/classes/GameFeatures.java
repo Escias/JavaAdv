@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class GameFeatures {
+
     public void start(){
         System.out.println("Bienvenue dans Colossal Cave ! selon votre position, une ou plusieurs directions seront possibles, représentées par la première lettre des points cardinaux (Nord = N...).\nPour quitter le jeu, entrer la lettre 'Q'\n\n");
         Lieu lieu = new Lieu(1,"Vous êtes au bout de la route devant un petit immeuble en brique. Un petit ruisseau coule a côté du building en bas d’une rigole.\n");
@@ -30,6 +31,7 @@ public class GameFeatures {
         }
         return copie;
     }
+
     public void guide(String choice, Lieu lieu, Map<Integer, String> direction ) {
         if (direction.containsValue(choice)) {
             for (Map.Entry<Integer, String> entry : direction.entrySet()) {
@@ -50,14 +52,8 @@ public class GameFeatures {
         String choice = sc.nextLine();
         switch (choice) {
             case "N":
-                guide(choice, lieu, direction);
-                break;
             case "E":
-                guide(choice, lieu, direction);
-                break;
             case "W":
-                guide(choice, lieu, direction);
-                break;
             case "S":
                 guide(choice, lieu, direction);
                 break;

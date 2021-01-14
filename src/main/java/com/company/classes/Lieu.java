@@ -21,47 +21,11 @@ public class Lieu {
     public void changePlace(int id){
         switch (id){
             case 1:
-                this.id = 1;
-                try {
-                    this.description = config.parseDescription(String.valueOf(this.id));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                break;
             case 2 :
-                this.id = 2;
-                try {
-                    this.description = config.parseDescription(String.valueOf(this.id));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                break;
             case 3 :
-                this.id = 3;
-                try {
-                    this.description = config.parseDescription(String.valueOf(this.id));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                break;
             case 4 :
-                this.id = 4;
-                try {
-                    this.description = config.parseDescription(String.valueOf(this.id));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                break;
             case 5 :
-                this.id = 5;
+                this.id = id;
                 try {
                     this.description = config.parseDescription(String.valueOf(this.id));
                 } catch (IOException e) {
@@ -75,45 +39,9 @@ public class Lieu {
     public void attributeDirection(){
         switch(this.id){
             case 1:
-                direction.clear();
-                try {
-                    this.direction = config.parseDirection(String.valueOf(this.id));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                break;
             case 2 :
-                direction.clear();
-                try {
-                    this.direction = config.parseDirection(String.valueOf(this.id));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                break;
             case 3 :
-                direction.clear();
-                try {
-                    this.direction = config.parseDirection(String.valueOf(this.id));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                break;
             case 4 :
-                direction.clear();
-                try {
-                    this.direction = config.parseDirection(String.valueOf(this.id));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                break;
             case 5 :
                 direction.clear();
                 try {
