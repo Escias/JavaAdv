@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class HospitalConfigMenu {
-    public static List<Doctor> host = new ArrayList();
+    public static List<HospitalConfig> hospitals = new ArrayList();
 
     public void Config(){
         System.out.println("Config your hospital\n");
@@ -39,8 +39,6 @@ public class HospitalConfigMenu {
         }while (room <= 0);
         Add(floor, room);
     }
-
-    public static List<HospitalConfig> hospitals = new ArrayList();
 
     public void LoadHospital() throws IOException, ParseException {
         JSONParser jsonParser = new JSONParser();
