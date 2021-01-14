@@ -45,9 +45,20 @@ public class DoctorMenu {
             doctor.price = newValue;
         }
     }
+
+    public static String CheckValidity(String name){
+        Doctor doctor = getDoctor(name);
+        assert doctor != null;
+        return doctor.matriculeNumber;
+    }
+
     public static Doctor getDoctor(String name){
         for (Doctor doctor:doctors) {
             if(doctor.firstName.equals(name)){
+                return doctor;
+            }else if(doctor.lastName.equals(name)){
+                return doctor;
+            }else if(doctor.matriculeNumber.equals(name)){
                 return doctor;
             }
         }

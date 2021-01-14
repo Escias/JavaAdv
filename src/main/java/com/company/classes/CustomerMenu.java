@@ -45,9 +45,26 @@ public class CustomerMenu {
             customer.mail = newValue;
         }
     }
+
+    public static String CheckValidity(String name){
+        Customer customer = getCustomer(name);
+        assert customer != null;
+        return customer.socialSecurityNumber;
+    }
+
+    public static String getCustomerName(String name){
+        Customer customer = getCustomer(name);
+        assert customer != null;
+        return customer.firstName;
+    }
+
     public static Customer getCustomer(String name){
         for (Customer customer:customers) {
             if(customer.firstName.equals(name)){
+                return customer;
+            }else if (customer.lastName.equals(name)){
+                return customer;
+            }else if (customer.socialSecurityNumber.equals(name)){
                 return customer;
             }
         }

@@ -40,20 +40,6 @@ public class HospitalConfigMenu {
         Add(floor, room);
     }
 
-    public void LoadHospital() throws IOException, ParseException {
-        JSONParser jsonParser = new JSONParser();
-        FileReader reader = new FileReader("hospital.json");
-        org.json.simple.JSONArray hospitalsList = (org.json.simple.JSONArray) jsonParser.parse(reader);
-        for (Object hospitalInfoObject:hospitalsList)
-        {
-            org.json.simple.JSONObject hospitalInfo = (org.json.simple.JSONObject) hospitalInfoObject;
-            HospitalConfig hospitalConfig= new HospitalConfig(hospitalInfo.get("floor").toString(),
-                    hospitalInfo.get("chamber").toString(),
-                    hospitalInfo.get("status").toString());
-            hospitals.add(hospitalConfig);
-        }
-    }
-
     public void Add(int floor, int room) {
         List<String> chambers = new ArrayList<>();
         HospitalConfig hospitalConfig;
@@ -80,7 +66,30 @@ public class HospitalConfigMenu {
         }
     }
 
-    public void saveHospital() throws IOException {
+    public static void ChangeChamberStatus(String number, String status){
+        HospitalConfig hospitalConfig = getHospitalConfig(number);
+        if (status.equals("done")){
+            hospitalConfig.status = "Unavailable";
+        }else if (status.equals("cancel")){
+            hospitalConfig.status = "Available";
+        }
+    }
+
+    public static void loadHospital() throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader("hospital.json");
+        org.json.simple.JSONArray hospitalsList = (org.json.simple.JSONArray) jsonParser.parse(reader);
+        for (Object hospitalInfoObject:hospitalsList)
+        {
+            org.json.simple.JSONObject hospitalInfo = (org.json.simple.JSONObject) hospitalInfoObject;
+            HospitalConfig hospitalConfig= new HospitalConfig(hospitalInfo.get("floor").toString(),
+                    hospitalInfo.get("chamber").toString(),
+                    hospitalInfo.get("status").toString());
+            hospitals.add(hospitalConfig);
+        }
+    }
+
+    public static void saveHospital() throws IOException {
         JSONArray hospitalsList = new JSONArray();
         for (HospitalConfig hospitalConfig:hospitals)
         {

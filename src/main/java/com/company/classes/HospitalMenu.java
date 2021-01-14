@@ -104,40 +104,45 @@ public class HospitalMenu {
 
     public void BookingMenu(){
         System.out.println("[1] Add reservation\n" +
-                "[2] Make a reservation\n" +
-                "[3] Modify a reservation\n" +
-                "[4] View reservation\n" +
-                "[5] Cancel a reservation\"" +
-                "[6] Return");
+                "[2] Modify a reservation\n" +
+                "[3] View reservation\n" +
+                "[4] Cancel a reservation\n" +
+                "[5] Return");
         Scanner c = new Scanner(System.in);
         int choice = c.nextInt();
         switch (choice){
             case 1:
-                System.out.println("Enter doctor number, customer number, customer name, reason, duration");
+                System.out.println("reason, duration");
                 Scanner info = new Scanner(System.in);
                 String information = info.nextLine();
                 String[] booking = information.split(",");
                 BookingMenu bookingMenu = new BookingMenu();
-                bookingMenu.Add(booking[0],booking[1],booking[2],booking[3],booking[4]);
+                bookingMenu.Add(booking[0],booking[1]);
                 BookingMenu();
                 break;
             case 2:
+                System.out.println("Enter customer first name,field to change, new value");
+                Scanner m = new Scanner(System.in);
+                String modif = m.nextLine();
+                String[] modify = modif.split(",");
+                BookingMenu.Modify(modify[0], modify[1], modify[2]);
                 BookingMenu();
                 break;
             case 3:
-                BookingMenu();
-                break;
-            case 4:
                 System.out.println("Enter customer name");
                 Scanner v = new Scanner(System.in);
                 String view = v.nextLine();
                 BookingMenu.View(view);
                 BookingMenu();
                 break;
-            case 5:
+            case 4:
+                System.out.println("Enter customer name");
+                Scanner ca = new Scanner(System.in);
+                String cancel = ca.nextLine();
+                BookingMenu.CancelBooking(cancel);
                 BookingMenu();
                 break;
-            case 6:
+            case 5:
                 Menu();
                 break;
         }

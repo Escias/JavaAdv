@@ -10,6 +10,10 @@ import static com.company.classes.CustomerMenu.loadCustomers;
 import static com.company.classes.CustomerMenu.saveCustomers;
 import static com.company.classes.DoctorMenu.loadDoctors;
 import static com.company.classes.DoctorMenu.saveDoctors;
+import static com.company.classes.HospitalConfigMenu.loadHospital;
+import static com.company.classes.HospitalConfigMenu.saveHospital;
+import static com.company.classes.BookingMenu.loadBooking;
+import static com.company.classes.BookingMenu.saveBooking;
 
 public class Main {
 
@@ -19,10 +23,11 @@ public class Main {
 
         loadDoctors();
         loadCustomers();
+        loadBooking();
 
         File check = new File("hospital.json");
         if (check.exists() && !check.isDirectory()){
-            hospitalConfig.LoadHospital();
+            loadHospital();
             menu.Menu();
         }else{
             hospitalConfig.Config();
@@ -30,6 +35,7 @@ public class Main {
 
         saveDoctors();
         saveCustomers();
-        hospitalConfig.saveHospital();
+        saveHospital();
+        saveBooking();
     }
 }
