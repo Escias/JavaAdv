@@ -2,6 +2,7 @@ package com.company.classes;
 
 import com.sun.jdi.Value;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -14,32 +15,57 @@ public class GameFeatures {
 
     public void localisation(Lieu lieu){
         System.out.println(lieu.description);
-        for (Map.Entry<String, Integer> entry : lieu.direction.entrySet()) {
-            System.out.println(entry.getKey());
+        for (Map.Entry<Integer, String> entry : lieu.direction.entrySet()) {
+            System.out.println(entry.getValue());
         }
-        getDirection();
+        getDirection(copieMap(lieu.direction), lieu );
+
     }
 
-    public void getDirection(){
+    public Map<Integer, String> copieMap(Map<Integer, String> direction){
+        Map<Integer, String> copie = new HashMap();
+        for (Map.Entry<Integer, String> entry : direction.entrySet()) {
+            copie.put(entry.getKey(), entry.getValue().substring(0, 1));
+        }
+        return copie;
+    }
+    public void guide(String choice, Lieu lieu, Map<Integer, String> direction ){
+        if (direction.containsValue(choice)) {
+            for (Map.Entry<Integer, String> entry : direction.entrySet()) {
+                if(entry.getValue().equals(choice)){
+                    lieu.changePlace(entry.getKey());
+                    lieu.attributeDirection();
+                    localisation(lieu);
+                }
+            }
+        }else{
+            System.out.println("Entrez un lieu disponible");
+            localisation(lieu);
+        }
+    }
+
+    public void getDirection(Map<Integer, String> direction, Lieu lieu){
         Scanner sc = new Scanner(System.in);
         String choice = sc.nextLine();
         switch (choice) {
             case "N":
+                guide(choice, lieu, direction);
                 break;
             case "E":
-
+                guide(choice, lieu, direction);
                 break;
-            case "O":
-
+            case "W":
+                guide(choice, lieu, direction);
                 break;
             case "S":
-
+                guide(choice, lieu, direction);
                 break;
             case "Q":
                 quit();
                 break;
             default:
                 System.out.println("Entrez un lieu disponible");
+                localisation(lieu);
 
                 break;
         }
