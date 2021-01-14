@@ -21,34 +21,34 @@ public class BookingMenu {
         String customer = cu.nextLine();
         boolean checkCustomer = ValidityCustomer(customer);
         do {
-            while (checkCustomer == false){
+            while (!checkCustomer){
                 System.out.println("Customer not found / Enter new social security number or Customer's name");
                 customer = cu.nextLine();
                 checkCustomer = ValidityCustomer(customer);
             }
-        }while (checkCustomer == false);
+        }while (!checkCustomer);
         System.out.println("Select chamber");
         Scanner ch = new Scanner(System.in);
         String chamber = ch.nextLine();
         boolean checkChamber = ValidityChamber(chamber);
         do {
-            while (checkChamber == false){
+            while (!checkChamber){
                 System.out.println("Unavailable / Select new chamber");
                 chamber = ch.nextLine();
                 checkChamber = ValidityChamber(chamber);
             }
-        } while (checkChamber == false);
+        } while (!checkChamber);
         System.out.println("Enter doctor name or matricule");
         Scanner doc = new Scanner(System.in);
         String doctor = doc.nextLine();
         boolean checkDoctor = ValidityDoctor(doctor);
         do {
-            while (checkDoctor == false){
+            while (!checkDoctor){
                 System.out.println("Doctor not Found / Enter new Matricule number or Doctor's name");
                 doctor = doc.nextLine();
                 checkDoctor = ValidityDoctor(doctor);
             }
-        }while (checkDoctor == false);
+        }while (!checkDoctor);
         String matricule = DoctorMenu.CheckValidity(doctor);
         String social = CustomerMenu.CheckValidity(customer);
         String customerName = CustomerMenu.getCustomerName(customer);
@@ -140,7 +140,7 @@ public class BookingMenu {
     public static void CancelBooking(String customerName){
         Booking booking = getBooking(customerName);
         HospitalConfigMenu.ChangeChamberStatus(booking.chamber, "cancel");
-        //Add code
+        bookings.remove(booking);
     }
 
     public static Booking getBooking(String name){
