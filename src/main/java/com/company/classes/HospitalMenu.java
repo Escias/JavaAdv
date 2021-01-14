@@ -16,7 +16,7 @@ public class HospitalMenu {
         }else if (choice.contains("Customer")){
             CustomerMenu();
         }else if (choice.contains("Appointment")){
-
+            AppointmentMenu();
         }else if (choice.contains("Booking")){
 
         }
@@ -85,6 +85,40 @@ public class HospitalMenu {
                 Menu();
                 break;
             case 3:
+                break;
+        }
+    }
+    private void AppointmentMenu(){
+        System.out.println("[1] Add appointment\n" +
+                "[2] View appointment\n" +
+                "[3] Modify appointment");
+        Scanner scan = new Scanner(System.in);
+        int choice = scan.nextInt();
+        switch (choice) {
+            case 1:
+                System.out.println("Enter doctor name,customer name, date");
+                Scanner info = new Scanner(System.in);
+                String information = info.nextLine();
+                String[] appointment = information.split(",");
+                System.out.println(appointment[1]);
+                AppointmentMenu.Add(appointment[0], appointment[1], appointment[2]);
+                System.out.println("Added");
+                Menu();
+                break;
+            case 2:
+                System.out.println("Enter doc name,customer name");
+                Scanner v = new Scanner(System.in);
+                String[] view = v.nextLine().split(",");
+                AppointmentMenu.View(view[0],view[1]);
+                Menu();
+                break;
+            case 3:
+                System.out.println("Enter date,field to change, new value");
+                Scanner m = new Scanner(System.in);
+                String modify = m.nextLine();
+                String[] modif = modify.split(",");
+                AppointmentMenu.Modify(modif[0], modif[1], modif[2]);
+                Menu();
                 break;
         }
     }
