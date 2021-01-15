@@ -17,10 +17,13 @@ public class HospitalMenu {
         }else if (choice.contains("Customer")){
             CustomerMenu();
         }else if (choice.contains("Appointment")){
-
+            AppointmentMenu();
         }else if (choice.contains("Booking")){
             BookingMenu();
         }else if (choice.contains("Exit")){
+            return;
+        }
+        else if(choice.contains("exit")){
             return;
         }
     }
@@ -29,7 +32,8 @@ public class HospitalMenu {
         System.out.println("[1] Add doctor\n" +
                 "[2] View information\n" +
                 "[3] Modify information\n" +
-                "[4] Return");
+                "[4] Delete a doctor\n" +
+                "[5] Return\n");
         Scanner doc = new Scanner(System.in);
         int choice = doc.nextInt();
         switch (choice){
@@ -59,6 +63,13 @@ public class HospitalMenu {
                 DoctorMenu();
                 break;
             case 4:
+                System.out.println("Enter first name of doctor to delete");
+                Scanner n=new Scanner(System.in);
+                String name = n.nextLine();
+                DoctorMenu.Delete(name);
+                DoctorMenu();
+                break;
+            case 5:
                 Menu();
                 break;
         }
@@ -67,8 +78,9 @@ public class HospitalMenu {
     private void CustomerMenu(){
         System.out.println("[1] Add Customer\n" +
                 "[2] View information\n" +
-                "[3] Modify information\n" +
-                "[4] Return");
+                "[3] Modify information\n"+
+                "[4] Delete a customer\n" +
+                "[5] Return");
         Scanner cus = new Scanner(System.in);
         int choice = cus.nextInt();
         switch (choice){
@@ -97,6 +109,13 @@ public class HospitalMenu {
                 CustomerMenu();
                 break;
             case 4:
+                System.out.println("Enter first name of customer to delete");
+                Scanner n=new Scanner(System.in);
+                String name = n.nextLine();
+                CustomerMenu.Delete(name);
+                CustomerMenu();
+                break;
+            case 5:
                 Menu();
                 break;
         }
@@ -151,6 +170,52 @@ public class HospitalMenu {
                 BookingMenu();
                 break;
             case 6:
+                Menu();
+                break;
+        }
+    }
+    private void AppointmentMenu(){
+        System.out.println("[1] Add appointment\n" +
+                "[2] View appointment\n" +
+                "[3] Modify appointment\n"+
+                "[4] Delete an Appointment\n" +
+                "[5] Return");
+        Scanner scan = new Scanner(System.in);
+        int choice = scan.nextInt();
+        switch (choice) {
+            case 1:
+                System.out.println("Enter doctor name,customer name, date");
+                Scanner info = new Scanner(System.in);
+                String information = info.nextLine();
+                String[] appointment = information.split(",");
+                System.out.println(appointment[1]);
+                AppointmentMenu.Add(appointment[0], appointment[1], appointment[2]);
+                System.out.println("Added");
+                AppointmentMenu();
+                break;
+            case 2:
+                System.out.println("Enter doc name,customer name");
+                Scanner v = new Scanner(System.in);
+                String[] view = v.nextLine().split(",");
+                AppointmentMenu.View(view[0],view[1]);
+                AppointmentMenu();
+                break;
+            case 3:
+                System.out.println("Enter date,field to change, new value");
+                Scanner m = new Scanner(System.in);
+                String modify = m.nextLine();
+                String[] modif = modify.split(",");
+                AppointmentMenu.Modify(modif[0], modif[1], modif[2]);
+                AppointmentMenu();
+                break;
+            case 4:
+                System.out.println("Enter date of appointment to delete");
+                Scanner n=new Scanner(System.in);
+                String date = n.nextLine();
+                AppointmentMenu.Delete(date);
+                AppointmentMenu();
+                break;
+            case 5:
                 Menu();
                 break;
         }

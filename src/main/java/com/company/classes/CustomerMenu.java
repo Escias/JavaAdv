@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerMenu {
-    public static List<Customer> customers = new ArrayList();
+    public static List<Customer> customers = new ArrayList<>();
 
     public static void Add(String socialSecurityNumber,String lastName, String firstName,String address, String phone, String mail){
         Customer customer = new Customer(socialSecurityNumber, lastName, firstName, address, phone, mail);
@@ -60,6 +60,16 @@ public class CustomerMenu {
         Customer customer = getCustomer(name);
         assert customer != null;
         return customer.firstName;
+    }
+
+    public static void Delete(String customerName){
+        Customer customer=getCustomer(customerName);
+        int customerId=customers.indexOf(customer);
+        if(customerId==-1){
+            System.out.println("customer doesn't exist");
+            return;
+        }
+        customers.remove(customerId);
     }
 
     public static Customer getCustomer(String name){

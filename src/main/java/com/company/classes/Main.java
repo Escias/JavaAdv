@@ -3,9 +3,10 @@ package com.company.classes;
 import org.json.simple.parser.ParseException;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 
+import static com.company.classes.AppointmentMenu.loadAppointments;
+import static com.company.classes.AppointmentMenu.saveAppointments;
 import static com.company.classes.CustomerMenu.loadCustomers;
 import static com.company.classes.CustomerMenu.saveCustomers;
 import static com.company.classes.DoctorMenu.loadDoctors;
@@ -27,6 +28,7 @@ public class Main {
         loadCustomers();
         loadBooking();
         loadInvoice();
+        loadAppointments();
 
         File check = new File("hospital.json");
         if (check.exists() && !check.isDirectory()){
@@ -41,5 +43,6 @@ public class Main {
         saveHospital();
         saveBooking();
         saveInvoice();
+        saveAppointments();
     }
 }

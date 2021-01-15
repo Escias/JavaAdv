@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorMenu {
-    public static List<Doctor> doctors = new ArrayList();
+    public static List<Doctor> doctors = new ArrayList<>();
 
     public static void Add(String matriculeNumber,String lastName, String firstName,String speciality, String grade, String price){
         Doctor doctor = new Doctor(matriculeNumber, lastName, firstName, speciality, grade, price);
@@ -20,17 +21,27 @@ public class DoctorMenu {
     }
 
     public static void View(String doctorName) {
-        Doctor doctor=getDoctor(doctorName);
+        Doctor doctor = getDoctor(doctorName);
         if (doctor == null) {
             System.out.println("Doctor not found");
-        }else{
-            System.out.println("N°:"+doctor.matriculeNumber);
-            System.out.println("Name"+doctor.lastName);
-            System.out.println("First name:"+doctor.firstName);
-            System.out.println("Speciality:"+doctor.speciality);
-            System.out.println("Grade:"+doctor.grade);
-            System.out.println("Price per hour:"+doctor.price);
+        } else {
+            System.out.println("N°:" + doctor.matriculeNumber);
+            System.out.println("Name" + doctor.lastName);
+            System.out.println("First name:" + doctor.firstName);
+            System.out.println("Speciality:" + doctor.speciality);
+            System.out.println("Grade:" + doctor.grade);
+            System.out.println("Price per hour:" + doctor.price);
         }
+    }
+
+    public static void Delete(String doctorName){
+        Doctor doctor=getDoctor(doctorName);
+        int doctorId=doctors.indexOf(doctor);
+        if(doctorId==-1){
+            System.out.println("doctor doesn't exist");
+            return;
+        }
+        doctors.remove(doctorId);
     }
 
     public static void Modify(String name,String elementToChange,String newValue){
@@ -113,7 +124,6 @@ public class DoctorMenu {
             doctorDetails.put("price",doctor.price);
 
             doctorsList.put(doctorDetails);
-
         }
         FileWriter file = new FileWriter("doctors.json");
         file.write(doctorsList.toString());
