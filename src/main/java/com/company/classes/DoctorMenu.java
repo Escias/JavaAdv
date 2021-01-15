@@ -18,6 +18,16 @@ public class DoctorMenu {
         doctors.add(doctor);
     }
 
+    public static void Delete(String doctorName){
+        Doctor doctor=getDoctor(doctorName);
+        int doctorId=doctors.indexOf(doctor);
+        if(doctorId==-1){
+            System.out.println("doctor doesn't exist");
+            return;
+        }
+        doctors.remove(doctorId);
+    }
+
     public static void View(String doctorName) {
         Doctor doctor=getDoctor(doctorName);
         System.out.println("N°:"+doctor.matriculeNumber);
@@ -97,10 +107,10 @@ public class DoctorMenu {
             doctorDetails.put("price",doctor.price);
 
             doctorsList.put(doctorDetails);
-
         }
         FileWriter file = new FileWriter("doctors.json");
         file.write(doctorsList.toString());
         file.flush();
     }
+
 }

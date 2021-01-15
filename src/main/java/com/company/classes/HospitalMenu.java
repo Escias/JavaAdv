@@ -28,7 +28,8 @@ public class HospitalMenu {
     private void DoctorMenu(){
         System.out.println("[1] Add doctor\n" +
                 "[2] View information\n" +
-                "[3] Modify information");
+                "[3] Modify information\n" +
+                "[4] Delete a doctor");
         Scanner doc = new Scanner(System.in);
         int choice = doc.nextInt();
         switch (choice){
@@ -57,13 +58,21 @@ public class HospitalMenu {
                 DoctorMenu.Modify(modif[0], modif[1], modif[2]);
                 Menu();
                 break;
+            case 4:
+                System.out.println("Enter first name of doctor to delete");
+                Scanner n=new Scanner(System.in);
+                String name = n.nextLine();
+                DoctorMenu.Delete(name);
+                Menu();
+                break;
         }
     }
 
     private void CustomerMenu(){
         System.out.println("[1] Add Customer\n" +
                 "[2] View information\n" +
-                "[3] Modify information");
+                "[3] Modify information\n"+
+                "[4] Delete a customer");
         Scanner cus = new Scanner(System.in);
         int choice = cus.nextInt();
         switch (choice){
@@ -86,12 +95,20 @@ public class HospitalMenu {
                 break;
             case 3:
                 break;
+            case 4:
+                System.out.println("Enter first name of customer to delete");
+                Scanner n=new Scanner(System.in);
+                String name = n.nextLine();
+                CustomerMenu.Delete(name);
+                Menu();
+                break;
         }
     }
     private void AppointmentMenu(){
         System.out.println("[1] Add appointment\n" +
                 "[2] View appointment\n" +
-                "[3] Modify appointment");
+                "[3] Modify appointment\n"+
+                "[4] Delete an Appointment");
         Scanner scan = new Scanner(System.in);
         int choice = scan.nextInt();
         switch (choice) {
@@ -118,6 +135,13 @@ public class HospitalMenu {
                 String modify = m.nextLine();
                 String[] modif = modify.split(",");
                 AppointmentMenu.Modify(modif[0], modif[1], modif[2]);
+                Menu();
+                break;
+            case 4:
+                System.out.println("Enter date of appointment to delete");
+                Scanner n=new Scanner(System.in);
+                String date = n.nextLine();
+                AppointmentMenu.Delete(date);
                 Menu();
                 break;
         }

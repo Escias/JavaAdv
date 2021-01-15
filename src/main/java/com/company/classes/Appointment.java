@@ -15,7 +15,6 @@ public class Appointment {
         this.customerName = customerName;
         Date parsedDate = parseDate(date);
         this.date = parsedDate;
-        System.out.println(this.date);
     }
     public static Date parseDate(String date) {
         try {

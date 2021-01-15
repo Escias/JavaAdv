@@ -19,6 +19,16 @@ public class CustomerMenu {
         customers.add(customer);
     }
 
+    public static void Delete(String customerName){
+        Customer customer=getCustomer(customerName);
+        int customerId=customers.indexOf(customer);
+        if(customerId==-1){
+            System.out.println("customer doesn't exist");
+            return;
+        }
+        customers.remove(customerId);
+    }
+
     public static void View(String customerName) {
         Customer customer=getCustomer(customerName);
         System.out.println("N°:"+customer.socialSecurityNumber);
