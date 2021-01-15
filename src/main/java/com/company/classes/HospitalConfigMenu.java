@@ -64,6 +64,8 @@ public class HospitalConfigMenu {
                 hospitals.add(hospitalConfig);
             }
         }
+        HospitalMenu hospitalMenu= new HospitalMenu();
+        hospitalMenu.Menu();
     }
 
     public static void ChangeChamberStatus(String number, String status){

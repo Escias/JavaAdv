@@ -9,6 +9,7 @@ public class HospitalMenu {
                 "Customer menu\n" +
                 "Appointment menu\n" +
                 "Booking menu\n" +
+                "Start Colossal Cave GOTY\n" +
                 "Exit");
         Scanner sc = new Scanner(System.in);
         String choice = sc.nextLine();
@@ -20,10 +21,11 @@ public class HospitalMenu {
             AppointmentMenu();
         }else if (choice.contains("Booking")){
             BookingMenu();
-        }else if (choice.contains("Exit")){
-            return;
-        }
-        else if(choice.contains("exit")){
+        }else if (choice.contains("game")||choice.contains("Colossal Cave")||choice.contains("Start")){
+            GameFeatures gameFeatures = new GameFeatures();
+            gameFeatures.start();
+            Menu();
+        } else if(choice.contains("Exit")||choice.contains("exit")){
             return;
         }
     }
