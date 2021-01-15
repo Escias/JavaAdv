@@ -68,12 +68,11 @@ public class InvoiceData {
         for (Invoice invoiceConfig:invoices)
         {
             JSONObject invoiceDetails=new JSONObject();
-            invoiceDetails.put("floor",invoiceConfig.customerName);
-            invoiceDetails.put("chamber",invoiceConfig.duration);
-            invoiceDetails.put("status",invoiceConfig.amount);
+            invoiceDetails.put("customerName",invoiceConfig.customerName);
+            invoiceDetails.put("duration",invoiceConfig.duration);
+            invoiceDetails.put("amount",invoiceConfig.amount);
 
             invoicesList.put(invoiceDetails);
-
         }
         FileWriter file = new FileWriter("invoices.json");
         file.write(invoicesList.toString());
